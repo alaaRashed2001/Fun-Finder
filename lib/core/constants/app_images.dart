@@ -6,4 +6,5 @@ class AppImages {
   static const String background = '${baseImageUrl}background.jpg';
   static const String leftCorner = '${baseImageUrl}left_corner.png';
   static const String rightCorner = '${baseImageUrl}right_corner.png';
+  static const String faceId = '${baseImageUrl}faceId.png';
 }

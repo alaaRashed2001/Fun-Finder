@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fun_finder/core/routing/routes.dart';
+import 'package:fun_finder/screens/facial_login.dart';
 import 'package:fun_finder/screens/login_screen.dart';
 import 'package:fun_finder/screens/splash_screen.dart';
 
@@ -16,7 +17,8 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => LoginScreen());
 
-
+      case Routes.facialLogin:
+        return MaterialPageRoute(builder: (_) => FacialLogin());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
