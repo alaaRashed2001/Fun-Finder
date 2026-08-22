@@ -81,7 +81,9 @@ class FacialLogin extends StatelessWidget {
               ],
             ),
           ),
-          CustomElevatedButton(text: "Start Facial Login", onPressed: () {}),
+          CustomElevatedButton(text: "Start Facial Login",
+              icon: AppIcons.camira,
+              onPressed: () {}),
           Row(
             spacing: 12,
             children: [
@@ -150,6 +152,7 @@ class FacialLogin extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 2.h),
           RichText(
             textAlign: TextAlign.center,
             text: TextSpan(

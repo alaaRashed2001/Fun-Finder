@@ -72,11 +72,11 @@ class AuthScreenTemplate extends StatelessWidget {
             right: 0,
             child: ClipRRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                 child: Container(
                   height: 300.h,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.75),
+                    color: Colors.white.withValues(alpha: 0.6),
                   ),
                 ),
               ),

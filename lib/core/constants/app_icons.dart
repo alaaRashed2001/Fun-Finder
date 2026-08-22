@@ -9,4 +9,5 @@ class AppIcons {
   static const String worn = '${baseIconUrl}worn.svg';
   static const String fingerprint = '${baseIconUrl}fingerprint.svg';
   static const String pinCode = '${baseIconUrl}pin_code.svg';
+  static const String camira = '${baseIconUrl}camira.svg';
 }
