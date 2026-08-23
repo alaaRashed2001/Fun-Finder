@@ -117,7 +117,10 @@ class AppTheme {
         ).labelMedium,
 
         suffixIconColor: lightColors.textSecondaryColor,
-
+        errorStyle: TextStyle(
+          fontSize: 10.sp,
+          color: Colors.red,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.r),
           borderSide: BorderSide(color: lightColors.inputBorderColor),

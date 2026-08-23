@@ -7,11 +7,12 @@ import 'dart:ui';
 
 class AuthScreenTemplate extends StatelessWidget {
   final Widget child;
-
-  const AuthScreenTemplate({super.key, required this.child});
+  final bool showPanel;
+  const AuthScreenTemplate({super.key, required this.child,    this.showPanel = true,});
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Stack(
         children: [
@@ -83,60 +84,84 @@ class AuthScreenTemplate extends StatelessWidget {
             ),
           ),
 
-          Positioned(
-            bottom: 0,
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeOutCubic,
+            bottom: showPanel ? 0 : -screenHeight,
             left: 12.w,
             right: 12.w,
+            child: _AuthPanel(
+              child: child,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class _AuthPanel extends StatelessWidget {
+  final Widget child;
+
+  const _AuthPanel({
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    return SizedBox(
+      height: screenHeight * (460 / 864),
+      width: double.infinity,
+      child: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: screenHeight * (460 / 864),
+            padding: EdgeInsets.only(
+              left: 16.w,
+              right: 16.w,
+              top: 16.h,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(35.r),
+                topRight: Radius.circular(35.r),
+              ),
+              color: Colors.white,
+            ),
+            child: child,
+          ),
+
+          Positioned(
+            bottom: 0,
+            left: 0,
             child: Stack(
+              alignment: Alignment.center,
               children: [
-                Container(
-                  height: 460.h,
-                  width: double.infinity,
-                  padding: EdgeInsets.only(
-                    left: 16.w,
-                    right: 16.w,
-                    top: 16.h,
-                    bottom: 0.h,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(35.r),
-                      topRight: Radius.circular(35.r),
-                    ),
-                    color: Colors.white,
-                  ),
-                  child: child,
+                AppAssetHelper.svgImage(
+                  AppSvgs.triangle,
                 ),
 
                 Positioned(
-                  bottom: 0,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      AppAssetHelper.svgImage(AppSvgs.triangle),
-                      Positioned(
-                        left: 12,
-                        bottom: -2,
-                        child: Image.asset(
-                          AppImages.leftCorner,
-                          width: 47.w,
-                          height: 47.h,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                Positioned(
-                  bottom: 0,
-                  right: 0,
+                  left: 12,
+                  bottom: -2,
                   child: Image.asset(
-                    AppImages.rightCorner,
-                    width: 44.w,
-                    height: 44.h,
+                    AppImages.leftCorner,
+                    width: 47.w,
+                    height: 47.h,
                   ),
                 ),
               ],
+            ),
+          ),
+
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Image.asset(
+              AppImages.rightCorner,
+              width: 44.w,
+              height: 44.h,
             ),
           ),
         ],
